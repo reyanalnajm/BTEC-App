@@ -22,10 +22,25 @@
             box-sizing: border-box;
         }
 
+        html {
+            width: 100%;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body, main, section {
+            max-width: 100%;
+        }
+
+        img, video, iframe {
+            max-width: 100%;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
-            padding: 28px 16px;
+            padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom));
             display: flex;
             justify-content: center;
             align-items: center;
@@ -71,7 +86,7 @@
         .card {
             position: relative;
             overflow: hidden;
-            padding: 32px 25px 24px;
+            padding: clamp(20px, 5vw, 32px) clamp(14px, 5vw, 25px) 22px;
             border: 1px solid var(--border);
             border-radius: 28px;
             background: linear-gradient(
@@ -141,8 +156,9 @@
             max-width: 360px;
             margin: 0 auto 25px;
             color: var(--muted);
-            font-size: 14px;
-            line-height: 2;
+            font-size: clamp(13px, 3.6vw, 14px);
+            line-height: 1.9;
+            overflow-wrap: anywhere;
         }
 
         .features {
@@ -177,8 +193,10 @@
             justify-content: center;
             gap: 12px;
             width: 100%;
-            min-height: 65px;
-            padding: 12px 18px;
+            min-height: 68px;
+            padding: 13px clamp(10px, 3vw, 18px);
+            text-align: right;
+            overflow-wrap: anywhere;
             border-radius: 17px;
             background: linear-gradient(110deg, #8d62e4, #6840bb);
             color: white;
@@ -220,16 +238,19 @@
         }
 
         .download-text strong {
-            font-size: 16px;
+            font-size: clamp(13px, 3.8vw, 16px);
+            line-height: 1.5;
         }
 
         .download-text small {
-            font-size: 11px;
+            font-size: clamp(10px, 3vw, 11px);
+            line-height: 1.5;
             color: #e4d7ff;
         }
 
         .download-arrow {
             margin-right: auto;
+            flex-shrink: 0;
             font-size: 20px;
         }
 
@@ -356,6 +377,99 @@
 
         footer span {
             color: #d3c0ff;
+        }
+
+        @media (max-width: 420px) {
+            body {
+                padding: 12px 9px;
+                align-items: flex-start;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .card {
+                border-radius: 22px;
+            }
+
+            h1 {
+                font-size: clamp(23px, 7vw, 29px);
+            }
+
+            .features {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .feature {
+                min-width: 0;
+                padding: 12px 3px;
+            }
+
+            .feature-title {
+                overflow-wrap: anywhere;
+                line-height: 1.5;
+            }
+
+            .download-options {
+                gap: 10px;
+            }
+
+            .download-btn {
+                gap: 9px;
+                min-height: 66px;
+            }
+
+            .download-icon {
+                font-size: 22px;
+                flex-shrink: 0;
+            }
+
+            .download-text {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .social-links {
+                gap: 9px;
+            }
+
+            .social-btn {
+                min-height: 48px;
+                padding: 10px 6px;
+                font-size: 12px;
+            }
+
+            .profile {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .top-label {
+                font-size: 10px;
+            }
+
+            .download-arrow {
+                display: none;
+            }
+
+            .features {
+                gap: 5px;
+            }
+
+            .feature-icon {
+                font-size: 20px;
+            }
+
+            .feature-title {
+                font-size: 9px;
+            }
+
+            .profile-detail {
+                font-size: 10px;
+            }
         }
 
         @media (max-width: 380px) {
@@ -495,7 +609,7 @@
 
                     <div class="profile-detail">
                         تكنولوجيا المعلومات • BTEC IT<br>
-                        مدرسة أسماء بنت أبي بكر
+                        مدرسة أسماء بنت أبي بكر لواء البتراء
                     </div>
                 </div>
             </div>
